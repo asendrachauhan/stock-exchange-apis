@@ -1,17 +1,17 @@
 -- ---------------------------------------
--- 1️⃣ Create the database (run as postgres)
+-- Create the database (run as postgres)
 -- ---------------------------------------
 
 CREATE DATABASE order_matching OWNER admin;
 
 -- ---------------------------------------
--- 2️⃣ Switch to your new DB
+-- Switch to your new DB
 -- ---------------------------------------
 
 \c order_matching
 
 -- ---------------------------------------
--- 3️⃣ Create the admin user if needed
+-- Create the admin user if needed
 -- (Skip this if it already exists!)
 -- ---------------------------------------
 
@@ -19,7 +19,7 @@ CREATE USER admin WITH PASSWORD 'admin';
 ALTER USER admin CREATEDB;
 
 -- ---------------------------------------
--- 4️⃣ Create pending_orders table, owned by admin
+-- Create pending_orders table, owned by admin
 -- ---------------------------------------
 
 CREATE TABLE pending_orders (
@@ -33,7 +33,7 @@ CREATE TABLE pending_orders (
 ALTER TABLE pending_orders OWNER TO admin;
 
 -- ---------------------------------------
--- 5️⃣ Create completed_orders table, owned by admin
+-- Create completed_orders table, owned by admin
 -- ---------------------------------------
 
 CREATE TABLE completed_orders (
@@ -46,13 +46,13 @@ CREATE TABLE completed_orders (
 ALTER TABLE completed_orders OWNER TO admin;
 
 -- ---------------------------------------
--- 6️⃣ Add indexes for performance
+-- Add indexes for performance
 -- ---------------------------------------
 
 CREATE INDEX idx_pending_buyer_price ON pending_orders (buyer_price);
 CREATE INDEX idx_pending_seller_price ON pending_orders (seller_price);
 
 -- ---------------------------------------
--- ✅ Done — admin owns all tables!
+-- Done — admin owns all tables!
 -- No permission errors when app connects.
 -- ---------------------------------------
